@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <title>Home</title>
+  </head>
+  <body>
+    <section>
+    <h1><%= title %></h1>
+    <p>Produtos já cadastrados no sistema</p>
+      <div class="container">
+      <table>
+      <thead>
+          <tr style="background-color: #fff">
+          <td style="width: 5%">Id</td>
+          <td style="width: 10%">Código de Barras</td>
+          <td style="width: 20%">Nome</td>
+          <td style="width: 10%">Fabricante</td>
+          <td style="width: 10%">Categoria</td>
+          <td style="width: 10%">Tipo de Produto</td>
+          <td style="width: 10%">Preço de Venda</td>
+          <td style="width: 10%">Quantidade em Estoque</td>
+          <td style="width: 10%">Peso em Gramas</td>
+          <td style="width: 30%">Descrição</td>
+          <td style="width: 20%">Link da Imagem</td>
+          <td style="width: 15%">Data da Inclusão</td>
+          <td style="width: 15%">Status</td>
+          <td style="width: 20%">Ações</td>
+          </tr>
+      </thead>
+      <tbody>
+          <% if(!results || results.length == 0) {%>
+            <tr>
+                <td colspan="14">Nenhum Produto cadastrado</td>
+            </tr>
+          <%} else {
+            results.forEach(function(produtos){%>
+              <tr>
+                <td style="width: 5%"><%=produtos.id%></td>
+                <td style="width: 10%"><%=produtos.cod_barras%></td>
+                <td style="width: 10%"><%=produtos.nome%></td>
+                <td style="width: 10%"><%=produtos.fabricante%></td>
+                <td style="width: 10%"><%=produtos.categoria%></td>
+                <td style="width:10%"><%=produtos.tipo_produto%></td>
+                <td style="width:10%"><%=produtos.preco_venda%></td>
+                <td style="width:10%"><%=produtos.quantidade_estoque%></td>
+                <td style="width:10%"><%=produtos.peso%></td>
+                <td style="width:10%"><%=produtos.descricao%></td>
+                <td style="width: 10%"><%=produtos.imagem%></td>
+                <td style="width:10%"><%=produtos.data_cadastro%></td>
+                <td style="width:10%"><%=produtos.status%></td>
+                <td id="acao">
+                  <a href="/edit/<%=produtos.id%>" id="edit"> Editar</a>
+                  <a href="/delete/<%=produtos.id%>" id="excluir" onclick="return confirm('Tem certeza?');">Excluir</a>
+                </td>
+              </tr>
+              <% })
+          }%> 
+        </tbody>
+      <tfoot>
+          <tr>
+            <td colspan="14">
+              <a href="/new">Cadastrar Novo Produto</a>
+            </td>
+          </tr>
+      </tfoot>
+  </table>
+  </div>
+  </section>
+  <div class="home">
+    <img src="./images/4928841.jpg" width = "1000px">
+  </div>
+  <!-- <footer><p>&copy; Design by Vilamar | Copyright 2021</p></footer> -->
+  </body>
+</html> 
+
